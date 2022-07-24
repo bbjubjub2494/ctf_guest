@@ -12,6 +12,7 @@
   inputs.nixpkgs-21_11.url = "nixpkgs/nixos-21.11";
 
   inputs.RedNixOS.url = "github:redcode-labs/RedNixOS";
+  inputs.rednix.follows = "RedNixOS/rednix";
 
   # Outputs are the public-facing interface to the flake.
   outputs = inputs @ {
@@ -56,19 +57,20 @@
                   options = ["defaults" "mode=755"];
                 };
 
-                environment.systemPackages = [
-                  (pkgs.python3.withPackages (p:
-                    with p; [
-                      pwntools
-                      pycryptodome
-                      gmpy2
-                    ]))
-                ];
+                environment.systemPackages =
+                  [
+                    (pkgs.python3.withPackages (p:
+                      with p; [
+                        pwntools
+                        pycryptodome
+                        gmpy2
+                      ]))
+                  ]
+                  ++ pkgs.lib.attrValues inputs.rednix.packages.${pkgs.system};
 
                 users.users.red.openssh.authorizedKeys.keys = ["ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCNjyVyANhlBmXytKjbXmk+qe+Tb8KoAGAnqjhooE5I4pBZqdEvcWqw+vhi1zUpNFk1EA6c7/czV4rmYgfXzqOVTPcmOPbrnZoAa9et6oOJMYE2RsPMLGCM18kcZHU656xtS+HfrsX+VRnEu/n8Mxx1tOKPe+JM3m1gIan3WEhbaEOlivUeXY3arnjPx1f11WIiZ+ZymBuOYo0yvYAx6FpILcFvdMfWDsiNBWNaOKqMxe12vZ+3JmbEJWioPp+oD6gb6HF4x92jajuG/MwtGkwfaKbOeaUYDSaYezl2vabLSuDhvRzXxhvWmiBjGkEDG4Sf4eRAwZ8XVsI6t9P6sxrL cardno:000500003C7C
 "];
               })
-            "${RedNixOS.outPath}/packages.nix"
             "${RedNixOS.outPath}/rednixos-iso-stable.nix"
           ];
         };

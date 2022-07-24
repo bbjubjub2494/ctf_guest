@@ -375,7 +375,11 @@
         "fup": "fup",
         "miniguest": "miniguest",
         "nixpkgs": "nixpkgs_5",
-        "nixpkgs-21_11": "nixpkgs-21_11_2"
+        "nixpkgs-21_11": "nixpkgs-21_11_2",
+        "rednix": [
+          "RedNixOS",
+          "rednix"
+        ]
       }
     },
     "utils": {
