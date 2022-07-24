@@ -3,14 +3,15 @@
     "RedNixOS": {
       "inputs": {
         "nixpkgs": "nixpkgs",
-        "nixpkgs-21_11": "nixpkgs-21_11"
+        "nixpkgs-21_11": "nixpkgs-21_11",
+        "rednix": "rednix"
       },
       "locked": {
-        "lastModified": 1658161815,
-        "narHash": "sha256-W9LamWmpd+VP5jKQhBK4TZrzIBo3swTjq72VqqdBHpc=",
+        "lastModified": 1658682525,
+        "narHash": "sha256-bsLHBPQvb9w1fUvvvTB9jlYgk3/t32yFv9K/xaqO6t4=",
         "owner": "redcode-labs",
         "repo": "RedNixOS",
-        "rev": "dbd22122e60c7999fa64349b3ed77c8454e4f8d3",
+        "rev": "257475bc55952b38a01ca7dd499c1379610fb3c9",
         "type": "github"
       },
       "original": {
@@ -187,6 +188,33 @@
         "type": "github"
       }
     },
+    "hackpkgs": {
+      "inputs": {
+        "flake-utils": [
+          "RedNixOS",
+          "rednix",
+          "utils"
+        ],
+        "nixpkgs": [
+          "RedNixOS",
+          "rednix",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1621341463,
+        "narHash": "sha256-Q+t5MuQcGzaL3zNuNkE4p20ZAgQqh4fEgh8IjRc0x3c=",
+        "owner": "applePrincess",
+        "repo": "hackpkgs",
+        "rev": "03550fbe91dfb9fcf93bf702da8fdf79afbfb0b3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "applePrincess",
+        "repo": "hackpkgs",
+        "type": "github"
+      }
+    },
     "miniguest": {
       "inputs": {
         "devshell": "devshell_2",
@@ -210,11 +238,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1656753965,
-        "narHash": "sha256-BCrB3l0qpJokOnIVc3g2lHiGhnjUi0MoXiw6t1o8H1E=",
+        "lastModified": 1658557357,
+        "narHash": "sha256-0gqNef6skYQKJSS2vLojxrXOrc72zoX5VTDKUqEo6Gk=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "0ea7a8f1b939d74e5df8af9a8f7342097cdf69eb",
+        "rev": "42ca9bef09e780eabe84328dd1b730cef978f098",
         "type": "github"
       },
       "original": {
@@ -226,11 +254,11 @@
     },
     "nixpkgs-21_11": {
       "locked": {
-        "lastModified": 1656753965,
-        "narHash": "sha256-BCrB3l0qpJokOnIVc3g2lHiGhnjUi0MoXiw6t1o8H1E=",
+        "lastModified": 1658557357,
+        "narHash": "sha256-0gqNef6skYQKJSS2vLojxrXOrc72zoX5VTDKUqEo6Gk=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "0ea7a8f1b939d74e5df8af9a8f7342097cdf69eb",
+        "rev": "42ca9bef09e780eabe84328dd1b730cef978f098",
         "type": "github"
       },
       "original": {
@@ -242,11 +270,11 @@
     },
     "nixpkgs-21_11_2": {
       "locked": {
-        "lastModified": 1656782578,
-        "narHash": "sha256-1eMCBEqJplPotTo/SZ/t5HU6Sf2I8qKlZi9MX7jv9fw=",
+        "lastModified": 1658346836,
+        "narHash": "sha256-c9BZZbi0tqCQ4j6CMVDlsut3Q3ET1Fezf+qIslCfkhs=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "573603b7fdb9feb0eb8efc16ee18a015c667ab1b",
+        "rev": "a1fe662eb26ffc2a036b37c4670392ade632c413",
         "type": "github"
       },
       "original": {
@@ -303,17 +331,40 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1658015103,
-        "narHash": "sha256-mO+23f3SO+fBzEvbxRe6GkSB5Xp43CT2sV8Rs8MYdz8=",
+        "lastModified": 1658557357,
+        "narHash": "sha256-0gqNef6skYQKJSS2vLojxrXOrc72zoX5VTDKUqEo6Gk=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "8f485713f5e6b6883a9b6959afa98688360a3ecb",
+        "rev": "42ca9bef09e780eabe84328dd1b730cef978f098",
         "type": "github"
       },
       "original": {
         "id": "nixpkgs",
         "ref": "nixos-unstable",
         "type": "indirect"
+      }
+    },
+    "rednix": {
+      "inputs": {
+        "hackpkgs": "hackpkgs",
+        "nixpkgs": [
+          "RedNixOS",
+          "nixpkgs"
+        ],
+        "utils": "utils"
+      },
+      "locked": {
+        "lastModified": 1658681844,
+        "narHash": "sha256-15X0ECxCxzIpbrEQNYhZb/L9Rq2aj1+cfldcxQs5xW4=",
+        "owner": "redcode-labs",
+        "repo": "RedNix",
+        "rev": "e35253be7f267301e8d159cd8b4a7f50b17343d9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "redcode-labs",
+        "repo": "RedNix",
+        "type": "github"
       }
     },
     "root": {
@@ -325,6 +376,21 @@
         "miniguest": "miniguest",
         "nixpkgs": "nixpkgs_5",
         "nixpkgs-21_11": "nixpkgs-21_11_2"
+      }
+    },
+    "utils": {
+      "locked": {
+        "lastModified": 1656928814,
+        "narHash": "sha256-RIFfgBuKz6Hp89yRr7+NR5tzIAbn52h8vT6vXkYjZoM=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "7e2a3b3dfd9af950a856d66b0a7d01e3c18aa249",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
       }
     }
   },
