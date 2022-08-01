@@ -15,7 +15,7 @@
   inputs.home-manager.url = "github:nix-community/home-manager";
   inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-  inputs.distro.url = "/home/louis/perso/config";
+  inputs.distro.url = "github:lourkeur/distro";
   inputs.ate.url = "github:andir/ate";
   inputs.ate.flake = false;
   inputs.RedNixOS.url = "github:redcode-labs/RedNixOS";
@@ -58,7 +58,10 @@
                   nixpkgs.config.permittedInsecurePackages = [
                     "tightvnc-1.3.10"
                   ];
+                  home-manager.useUserPackages = true;
+
                   environment.persistence."/persist".directories = ["/home/red"];
+                  services.xserver.displayManager.autoLogin.user = "red";
 
                   home-manager.users.red = {
                     imports = with distro.home.suites; base ++ dwm;
@@ -121,8 +124,10 @@
                     ]
                     ++ pkgs.lib.attrValues inputs.rednix.packages.${pkgs.system};
 
-                  users.users.red.openssh.authorizedKeys.keys = ["ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCNjyVyANhlBmXytKjbXmk+qe+Tb8KoAGAnqjhooE5I4pBZqdEvcWqw+vhi1zUpNFk1EA6c7/czV4rmYgfXzqOVTPcmOPbrnZoAa9et6oOJMYE2RsPMLGCM18kcZHU656xtS+HfrsX+VRnEu/n8Mxx1tOKPe+JM3m1gIan3WEhbaEOlivUeXY3arnjPx1f11WIiZ+ZymBuOYo0yvYAx6FpILcFvdMfWDsiNBWNaOKqMxe12vZ+3JmbEJWioPp+oD6gb6HF4x92jajuG/MwtGkwfaKbOeaUYDSaYezl2vabLSuDhvRzXxhvWmiBjGkEDG4Sf4eRAwZ8XVsI6t9P6sxrL cardno:000500003C7C
-"];
+                  users.users.red.openssh.authorizedKeys.keys = [
+                    "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCNjyVyANhlBmXytKjbXmk+qe+Tb8KoAGAnqjhooE5I4pBZqdEvcWqw+vhi1zUpNFk1EA6c7/czV4rmYgfXzqOVTPcmOPbrnZoAa9et6oOJMYE2RsPMLGCM18kcZHU656xtS+HfrsX+VRnEu/n8Mxx1tOKPe+JM3m1gIan3WEhbaEOlivUeXY3arnjPx1f11WIiZ+ZymBuOYo0yvYAx6FpILcFvdMfWDsiNBWNaOKqMxe12vZ+3JmbEJWioPp+oD6gb6HF4x92jajuG/MwtGkwfaKbOeaUYDSaYezl2vabLSuDhvRzXxhvWmiBjGkEDG4Sf4eRAwZ8XVsI6t9P6sxrL cardno:000500003C7C
+"
+                  ];
                 })
               "${RedNixOS.outPath}/rednixos-iso-stable.nix"
             ];
