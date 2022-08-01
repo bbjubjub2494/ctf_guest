@@ -10,6 +10,8 @@
   inputs.miniguest.url = "github:lourkeur/miniguest";
   inputs.nixpkgs.url = "nixpkgs/nixos-unstable";
   inputs.nixpkgs-21_11.url = "nixpkgs/nixos-21.11";
+  inputs.impermanence.url = "github:nix-community/impermanence";
+  inputs.impermanence.inputs.nixpkgs.follows = "nixpkgs";
   inputs.home-manager.url = "github:nix-community/home-manager";
   inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -43,6 +45,8 @@
           modules =
             distro.suites.dwm
             ++ [
+              distro.profiles.hardware.persistence
+              inputs.impermanence.nixosModules.impermanence
               inputs.home-manager.nixosModules.default
               miniguest.nixosModules.core
               ({
@@ -54,6 +58,8 @@
                   nixpkgs.config.permittedInsecurePackages = [
                     "tightvnc-1.3.10"
                   ];
+                  environment.persistence."/persist".directories = ["/home/red"];
+
                   home-manager.users.red = {
                     imports = distro.home.suites.dwm;
                     nixpkgs.overlays = [
@@ -86,11 +92,19 @@
                     };
                   };
                   boot.miniguest.enable = true;
+                  boot.initrd.availableKernelModules = ["virtio_blk"];
 
                   fileSystems."/" = {
                     device = "root";
                     fsType = "tmpfs";
                     options = ["defaults" "mode=755"];
+                  };
+
+                  fileSystems."/persist" = {
+                    device = "/dev/vda";
+                    fsType = "ext4";
+                    autoFormat = true;
+                    autoResize = true;
                   };
 
                   environment.systemPackages =

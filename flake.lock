@@ -189,15 +189,15 @@
       "locked": {
         "lastModified": 1659374711,
         "narHash": "sha256-MlGAEOhRoI7CXvwIGPk9BCrMUiGqSlFS7UVbAJkO+Fg=",
-        "ref": "main",
+        "owner": "lourkeur",
+        "repo": "distro",
         "rev": "2fccd57b31c42034ee0a3fd65f123baef5c4914f",
-        "revCount": 1686,
-        "type": "git",
-        "url": "file:///home/louis/perso/config"
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "file:///home/louis/perso/config"
+        "owner": "lourkeur",
+        "repo": "distro",
+        "type": "github"
       }
     },
     "flake-compat": {
@@ -608,6 +608,21 @@
       }
     },
     "impermanence": {
+      "locked": {
+        "lastModified": 1646131459,
+        "narHash": "sha256-GPmgxvUFvQ1GmsGfWHy9+rcxWrczeDhS9XnAIPHi9XQ=",
+        "owner": "nix-community",
+        "repo": "impermanence",
+        "rev": "2f39baeb7d039fda5fc8225111bb79474138e6f4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "impermanence",
+        "type": "github"
+      }
+    },
+    "impermanence_2": {
       "locked": {
         "lastModified": 1646131459,
         "narHash": "sha256-GPmgxvUFvQ1GmsGfWHy9+rcxWrczeDhS9XnAIPHi9XQ=",
@@ -1055,6 +1070,7 @@
         "flake-compat": "flake-compat_4",
         "fup": "fup_4",
         "home-manager": "home-manager_2",
+        "impermanence": "impermanence_2",
         "miniguest": "miniguest_2",
         "nixpkgs": "nixpkgs_13",
         "nixpkgs-21_11": "nixpkgs-21_11_2",
