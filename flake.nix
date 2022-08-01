@@ -61,7 +61,7 @@
                   environment.persistence."/persist".directories = ["/home/red"];
 
                   home-manager.users.red = {
-                    imports = distro.home.suites.dwm;
+                    imports = with distro.home.suites; base ++ dwm;
                     nixpkgs.overlays = [
                       (final: _: {
                         ate = final.callPackage inputs.ate {};
@@ -71,7 +71,6 @@
                       coal = "#100c0a";
                       ruby = "#e31e26";
                       lightgray = "#fce8c3";
-                      red = "#FF0000";
                       white = "#FFFFFF";
                     in {
                       normfg = lightgray;
@@ -79,8 +78,12 @@
                       normborder = coal;
                       selfg = white;
                       selbg = ruby;
-                      selborder = lightgray;
+                      selborder = ruby;
                     };
+
+                    lib.ate.config.options.BACKGROUND_COLOR = "#100c0a";
+
+                    lib.background.bgfile = "${RedNixOS}/assets/RedNixOSWallpaperAscii.png";
                     home.stateVersion = "22.11";
                   };
 
