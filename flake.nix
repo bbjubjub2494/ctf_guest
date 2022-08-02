@@ -70,6 +70,9 @@
                       ate = final.callPackage inputs.ate {};
                     })
                   ];
+
+                  services.syncthing.enable = true;
+
                   programs.dwm.colors = let
                     coal = "#100c0a";
                     ruby = "#e31e26";
