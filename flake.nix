@@ -101,7 +101,7 @@
                   };
                 };
                 boot.miniguest.enable = true;
-                boot.initrd.availableKernelModules = ["virtio_blk"];
+                boot.initrd.availableKernelModules = ["virtio_blk" "virtiofs"];
 
                 fileSystems."/" = {
                   device = "root";
@@ -115,6 +115,8 @@
                   autoFormat = true;
                   autoResize = true;
                 };
+
+                fileSystems."/nix/store".fsType = lib.mkForce "virtiofs";
 
                 environment.systemPackages =
                   [
