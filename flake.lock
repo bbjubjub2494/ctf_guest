@@ -631,15 +631,16 @@
         "nixpkgs": "nixpkgs_12"
       },
       "locked": {
-        "lastModified": 1659366289,
-        "narHash": "sha256-WF3X45VowDBWg23omyDIs1sAFJS/oJdp2/QyY5+6w0w=",
+        "lastModified": 1659716713,
+        "narHash": "sha256-ni9PkbUj2N1PoHSeeNhHDtwJMxAJN35XO42Bm/t6Y6g=",
         "owner": "lourkeur",
         "repo": "miniguest",
-        "rev": "99459c9e8d848ab7ddbd2b0e85b8556ffbdab4e0",
+        "rev": "6ea32074f3e1838b3d7f9ede968cd5b68fb0e7b8",
         "type": "github"
       },
       "original": {
         "owner": "lourkeur",
+        "ref": "develop",
         "repo": "miniguest",
         "type": "github"
       }

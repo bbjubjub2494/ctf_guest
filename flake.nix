@@ -7,7 +7,7 @@
   inputs.fup.url = "github:gytis-ivaskevicius/flake-utils-plus/v1.3.1";
   inputs.flake-compat.url = "github:edolstra/flake-compat";
   inputs.flake-compat.flake = false;
-  inputs.miniguest.url = "github:lourkeur/miniguest";
+  inputs.miniguest.url = "github:lourkeur/miniguest/develop";
   inputs.nixpkgs.url = "nixpkgs/nixos-unstable";
   inputs.nixpkgs-21_11.url = "nixpkgs/nixos-21.11";
 
@@ -101,7 +101,7 @@
                   };
                 };
                 boot.miniguest.enable = true;
-                boot.initrd.availableKernelModules = ["virtio_blk" "virtiofs"];
+                boot.miniguest.qemu.fsType = "virtiofs";
 
                 fileSystems."/" = {
                   device = "root";
@@ -115,8 +115,7 @@
                   autoFormat = true;
                   autoResize = true;
                 };
-
-                fileSystems."/nix/store".fsType = lib.mkForce "virtiofs";
+                boot.initrd.availableKernelModules = ["virtio_blk"];
 
                 environment.systemPackages =
                   [
