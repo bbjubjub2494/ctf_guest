@@ -14,6 +14,7 @@
   inputs.distro.url = "github:lourkeur/distro";
   inputs.ate.url = "github:andir/ate";
   inputs.ate.flake = false;
+  inputs.nix-alien.url = "github:thiagokokada/nix-alien";
   inputs.RedNixOS.url = "github:redcode-labs/RedNixOS";
   inputs.rednix.follows = "RedNixOS/rednix";
 
@@ -64,7 +65,10 @@
                 services.xserver.displayManager.autoLogin.user = "red";
 
                 home-manager.users.red = {
-                  imports = with distro.home.suites; base ++ dwm;
+                  imports = with distro.home.suites; base ++ dwm ++ (
+                    with distro.home.profiles; [
+                      nix-index
+                  ]);
                   nixpkgs.overlays = [
                     (final: _: {
                       ate = final.callPackage inputs.ate {};
@@ -115,10 +119,23 @@
                   autoFormat = true;
                   autoResize = true;
                 };
-                boot.initrd.availableKernelModules = ["virtio_blk"];
+                boot.initrd.availableKernelModules = ["overlay" "virtio_blk"];
+
+                fileSystems."/nix/store".mountPoint = "/nix/.miniguest-ro-store";
+                fileSystems."/nix/store".neededForBoot = true;
+                boot.initrd.postMountCommands = ''
+          echo "mounting overlay filesystem on /nix/store..."
+                  mount
+          mkdir -p 0755 $targetRoot/nix/.miniguest-rw-store/store $targetRoot/nix/.miniguest-rw-store/work $targetRoot/nix/store
+          mount -t overlay overlay $targetRoot/nix/store \
+            -o lowerdir=$targetRoot/nix/.miniguest-ro-store,upperdir=$targetRoot/nix/.miniguest-rw-store/store,workdir=$targetRoot/nix/.miniguest-rw-store/work || fail
+                  '';
+
+                  nix.settings.auto-optimise-store = lib.mkForce false;
 
                 environment.systemPackages =
                   [
+                    inputs.nix-alien.defaultPackage.${pkgs.system}
                     (pkgs.python3.withPackages (p:
                       with p; [
                         pwntools
@@ -127,6 +144,8 @@
                       ]))
                   ]
                   ++ pkgs.lib.attrValues inputs.rednix.packages.${pkgs.system};
+
+                programs.nix-ld.enable = true;
 
                 # conflict between RedNix and config
                 nix.package = lib.mkForce pkgs.nixFlakes;
