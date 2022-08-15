@@ -130,6 +130,7 @@
 
                 # conflict between RedNix and config
                 nix.package = lib.mkForce pkgs.nixFlakes;
+                services.pipewire.enable = lib.mkForce false;
                 time.timeZone = lib.mkForce "Europe/Zurich";
                 services.xserver.layout = lib.mkForce "custom";
                 i18n.defaultLocale = lib.mkForce "en_GB.UTF-8";
