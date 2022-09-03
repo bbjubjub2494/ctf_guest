@@ -125,6 +125,15 @@
                         pycryptodome
                         gmpy2
                       ]))
+                      # FHS compat
+                      (pkgs.buildFHSUserEnv {
+                        name = "fhs-run";                                                                                                                                     
+                        runScript = pkgs.writeShellScript "run" ''
+                          exec -- "$@"
+                        '';
+                      })
+                      pkgs.gcc
+                      pkgs.patchelf
                   ]
                   ++ pkgs.lib.attrValues inputs.rednix.packages.${pkgs.system};
 
