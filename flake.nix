@@ -80,6 +80,11 @@
                   # workaround https://github.com/NixOS/nixpkgs/issues/196651
                   manual.manpages.enable = false;
 
+                  xdg.configFile."pwn.conf".text = ''
+                    [context]
+                    terminal = 'ate'
+                  '';
+
                   services.syncthing.enable = true;
 
                   programs.dwm.colors = let
