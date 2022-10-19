@@ -64,6 +64,11 @@
                 environment.persistence."/persist".directories = ["/home/red"];
                 services.xserver.displayManager.autoLogin.user = "red";
 
+                home-manager.users.root = {
+                  # workaround https://github.com/NixOS/nixpkgs/issues/196651
+                  manual.manpages.enable = false;
+                };
+
                 home-manager.users.red = {
                   imports = with distro.home.suites; base ++ dwm;
                   nixpkgs.overlays = [
@@ -71,6 +76,9 @@
                       ate = final.callPackage inputs.ate {};
                     })
                   ];
+
+                  # workaround https://github.com/NixOS/nixpkgs/issues/196651
+                  manual.manpages.enable = false;
 
                   services.syncthing.enable = true;
 
