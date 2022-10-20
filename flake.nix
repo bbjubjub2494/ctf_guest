@@ -25,6 +25,7 @@
     fup,
     miniguest,
     nixpkgs,
+    nur,
     RedNixOS,
     ...
   }:
@@ -34,6 +35,7 @@
       sharedOverlays = [
         devshell.overlay
         distro.overlays.packages
+        nur.overlay
       ];
 
       hosts.RedNixOS = {
@@ -148,6 +150,7 @@
                       })
                       pkgs.gcc
                       pkgs.patchelf
+                      pkgs.nur.repos.htr.idafree
                   ]
                   ++ pkgs.lib.attrValues inputs.rednix.packages.${pkgs.system};
 
