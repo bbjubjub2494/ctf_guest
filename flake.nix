@@ -86,6 +86,9 @@
                     [context]
                     terminal = 'ate'
                   '';
+                  xdg.configFile."gdb/gdbinit".text = ''
+                    set auto-load safe-path /
+                  '';
 
                   services.syncthing.enable = true;
 
