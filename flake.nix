@@ -38,6 +38,19 @@
         nur.overlay
       ];
 
+      channels.nixpkgs = {
+        patches = [
+          (nixpkgs.legacyPackages.x86_64-linux.fetchpatch {
+            url = "https://github.com/NixOS/nixpkgs/pull/201544/commits/78b9c00cba064abea77e2fe4b95cf8c95416d7d6.patch";
+            hash = "sha256-iUvgwVZYgP85Jb18dPo6ECOPn64mAJ23lUQEcD4y1no=";
+          })
+        ];
+        config.allowUnfree = true;
+        config.permittedInsecurePackages = [
+          "tightvnc-1.3.10"
+        ];
+      };
+
       hosts.RedNixOS = {
         system = "x86_64-linux";
         specialArgs = {
@@ -57,10 +70,6 @@
                 pkgs,
                 ...
               }: {
-                nixpkgs.config.allowUnfree = true;
-                nixpkgs.config.permittedInsecurePackages = [
-                  "tightvnc-1.3.10"
-                ];
                 home-manager.useUserPackages = true;
 
                 environment.persistence."/persist".directories = ["/home/red"];
@@ -153,7 +162,7 @@
                       })
                       pkgs.gcc
                       pkgs.patchelf
-                      pkgs.nur.repos.htr.idafree
+                      pkgs.ida-free
                   ]
                   ++ pkgs.lib.attrValues inputs.rednix.packages.${pkgs.system};
 
