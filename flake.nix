@@ -186,6 +186,7 @@
 
               users.users.red.openssh.authorizedKeys.keys = [
                 "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCNjyVyANhlBmXytKjbXmk+qe+Tb8KoAGAnqjhooE5I4pBZqdEvcWqw+vhi1zUpNFk1EA6c7/czV4rmYgfXzqOVTPcmOPbrnZoAa9et6oOJMYE2RsPMLGCM18kcZHU656xtS+HfrsX+VRnEu/n8Mxx1tOKPe+JM3m1gIan3WEhbaEOlivUeXY3arnjPx1f11WIiZ+ZymBuOYo0yvYAx6FpILcFvdMfWDsiNBWNaOKqMxe12vZ+3JmbEJWioPp+oD6gb6HF4x92jajuG/MwtGkwfaKbOeaUYDSaYezl2vabLSuDhvRzXxhvWmiBjGkEDG4Sf4eRAwZ8XVsI6t9P6sxrL cardno:000500003C7C"
+                "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCCi/paFYz1/PJB0rEzTvQT5UrEDYmTvIr7ud+FDhb4WqWMEyAP0UL8WSEdmzSxxv0tsG7ZOMaEhOUyYUAsJIz2JYGzTSl6D4RTMWJhzEzDCssChSSXsrLflLovAwDu0hhEdXKWFA+cnA07Of0zqFNBY2TmArwLdBSfB1c85mMXMrmLb07uoJTx1joh5p3YtRm8u03uEzylIGa3p+Y+vj6I8Skbnx1K+acR6kpQs4tT8MzxVpiiBnBCgteo1uE5VzK6Cuw+roAb2gR2PXK+lVst1WBozYCcymo45jiw3gt+9w9RjXZLIhLHYQJRbanOMufAHFWieV77gHFus/gJxBJF cardno:0005 00003CB2"
               ];
             })
             "${RedNixOS.outPath}/rednixos-iso-stable.nix"
