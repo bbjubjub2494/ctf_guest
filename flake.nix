@@ -173,8 +173,10 @@
               services.xserver.layout = lib.mkForce "custom";
               i18n.defaultLocale = lib.mkForce "en_GB.UTF-8";
 
+              virtualisation.oci-containers.backend = "docker";
               virtualisation.oci-containers.containers.ida = {
-                image = "hacrot3000/docker-wine-ida";
+                image = "hacrot3000/docker-wine-ida:7.7sp1";
+                autoStart = false;
                 imageFile = pkgs.dockerTools.pullImage {
                   imageName = "hacrot3000/docker-wine-ida";
                   imageDigest = "sha256:8a748087e4f962c7d078fb24f9f67ec83a883ceaa0d94c4795bfc64518b6830c";
