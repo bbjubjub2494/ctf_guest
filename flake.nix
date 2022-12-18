@@ -73,7 +73,6 @@
           ++ distro.suites.dwm
           ++ [
             distro.profiles.hardware.persistence
-            distro.profiles.misc.nix-ld
             miniguest.nixosModules.core
             ({
               lib,
