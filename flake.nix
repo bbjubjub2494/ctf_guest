@@ -44,6 +44,16 @@
             url = "https://github.com/NixOS/nixpkgs/pull/201544/commits/78b9c00cba064abea77e2fe4b95cf8c95416d7d6.patch";
             hash = "sha256-iUvgwVZYgP85Jb18dPo6ECOPn64mAJ23lUQEcD4y1no=";
           })
+          (nixpkgs.legacyPackages.x86_64-linux.fetchpatch {
+            meta.description = "nixos/nix-ld: set NIX_LD by default";
+            url = "https://github.com/NixOS/nixpkgs/pull/206645/commits/6e802a7b7185dd920326ec7770bf220bb715aa8c.patch";
+            hash = "sha256-beUHtfKk5VRHJTIRjAx2KHIkXmtOucQNDrd2uj73YSI=";
+          })
+          (nixpkgs.legacyPackages.x86_64-linux.fetchpatch {
+            meta.description = "nix-ld: 1.0.2 -> 1.0.3";
+            url = "https://github.com/NixOS/nixpkgs/pull/206645/commits/65af40048fbf61223afffdf76283c4499bdff468.patch";
+            hash = "sha256-yKrTELax5D/TVrtSVRqEYVV+OJfzRVe37+ZgLX6laU4=";
+          })
         ];
         config.allowUnfree = true;
         config.permittedInsecurePackages = [
